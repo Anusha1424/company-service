@@ -23,7 +23,8 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 		<spring-cloud.version>Finchley.SR1</spring-cloud.version>
-		
+		<maven.compiler.source>1.8</maven.compiler.source>
+    	<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
 
 	<dependencies>
@@ -91,6 +92,28 @@
 			<artifactId>springdoc-openapi-ui</artifactId>
 			<version>1.2.32</version>
 		</dependency>
+		
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>io.micrometer</groupId>
+		    <artifactId>micrometer-registry-prometheus</artifactId>
+		</dependency>
+		<dependency>
+		<groupId>net.logstash.logback</groupId>
+		<artifactId>logstash-logback-encoder</artifactId>
+		<version>5.1</version>
+		</dependency>
+		<dependency>
+		<groupId>ch.qos.logback</groupId>
+		<artifactId>logback-core</artifactId>
+		</dependency>
+		<dependency>
+		<groupId>ch.qos.logback</groupId>
+		<artifactId>logback-classic</artifactId>
+		</dependency>
   		
 	</dependencies>
 
@@ -112,10 +135,22 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<exclude>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</exclude>
+					</excludes>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
+	            <configuration>
+	                <source>1.8</source>
+	                <target>1.8</target>
+	            </configuration>
 			</plugin>
 		</plugins>
 	</build>
