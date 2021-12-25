@@ -40,7 +40,7 @@ public class CompanyService {
 		try {
 			companyDao.save(company);
 		}catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	
 	}
